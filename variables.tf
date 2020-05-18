@@ -11,7 +11,7 @@ variable "edge_port" {
 }
 
 variable "image" {
-  type = string  version = "~> 1.11"
+  type = string
   description = "Docker image."
   default = "portainer/portainer-k8s-beta:linux-amd64"
 }
