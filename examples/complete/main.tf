@@ -6,8 +6,8 @@ provider "kubernetes" {
 }
 
 module "portainer" {
-  source = "./../../"
-  name = "my-portainer"
+  source    = "./../../"
+  name      = "my-portainer"
   edge_port = 8001
   http_port = 9001
   labels = {

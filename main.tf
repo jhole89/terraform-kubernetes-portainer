@@ -1,5 +1,5 @@
 locals {
-  labels = merge( { app = "app-${var.name}" }, var.labels)
+  labels = merge({ app = "app-${var.name}" }, var.labels)
 }
 
 resource "kubernetes_namespace" "portainer" {
@@ -10,7 +10,7 @@ resource "kubernetes_namespace" "portainer" {
 
 resource "kubernetes_service_account" "portainer" {
   metadata {
-    name = "${var.name}-sa-clusteradmin"
+    name      = "${var.name}-sa-clusteradmin"
     namespace = kubernetes_namespace.portainer.metadata[0].name
   }
   automount_service_account_token = true
@@ -22,19 +22,19 @@ resource "kubernetes_cluster_role_binding" "portainer" {
   }
   role_ref {
     api_group = "rbac.authorization.k8s.io"
-    kind = "ClusterRole"
-    name = "cluster-admin"
+    kind      = "ClusterRole"
+    name      = "cluster-admin"
   }
   subject {
-    kind = "ServiceAccount"
-    name = kubernetes_service_account.portainer.metadata[0].name
+    kind      = "ServiceAccount"
+    name      = kubernetes_service_account.portainer.metadata[0].name
     namespace = kubernetes_namespace.portainer.metadata[0].name
   }
 }
 
 resource "kubernetes_deployment" "portainer" {
   metadata {
-    name = var.name
+    name      = var.name
     namespace = kubernetes_namespace.portainer.metadata[0].name
   }
   spec {
@@ -48,17 +48,17 @@ resource "kubernetes_deployment" "portainer" {
       spec {
         service_account_name = kubernetes_service_account.portainer.metadata[0].name
         container {
-          name = var.name
-          image = "portainer/portainer-k8s-beta:linux-amd64"
+          name              = var.name
+          image             = "portainer/portainer-k8s-beta:linux-amd64"
           image_pull_policy = "Always"
           port {
-            name = "edge"
-            protocol = "TCP"
+            name           = "edge"
+            protocol       = "TCP"
             container_port = 8000
           }
           port {
-            name = "http"
-            protocol = "TCP"
+            name           = "http"
+            protocol       = "TCP"
             container_port = 9000
           }
           volume_mount {
@@ -81,22 +81,22 @@ resource "kubernetes_deployment" "portainer" {
 
 resource "kubernetes_service" "portainer" {
   metadata {
-    name = var.name
+    name      = var.name
     namespace = kubernetes_namespace.portainer.metadata[0].name
   }
   spec {
-    type = "LoadBalancer"
+    type     = "LoadBalancer"
     selector = kubernetes_deployment.portainer.spec[0].selector[0].match_labels
     port {
-      name = "edge"
-      protocol = kubernetes_deployment.portainer.spec[0].template[0].spec[0].container[0].port[0].protocol
-      port = var.edge_port
+      name        = "edge"
+      protocol    = kubernetes_deployment.portainer.spec[0].template[0].spec[0].container[0].port[0].protocol
+      port        = var.edge_port
       target_port = kubernetes_deployment.portainer.spec[0].template[0].spec[0].container[0].port[0].container_port
     }
     port {
-      name = "http"
-      protocol = kubernetes_deployment.portainer.spec[0].template[0].spec[0].container[0].port[1].protocol
-      port = var.http_port
+      name        = "http"
+      protocol    = kubernetes_deployment.portainer.spec[0].template[0].spec[0].container[0].port[1].protocol
+      port        = var.http_port
       target_port = kubernetes_deployment.portainer.spec[0].template[0].spec[0].container[0].port[1].container_port
     }
   }
