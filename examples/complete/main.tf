@@ -13,4 +13,6 @@ module "portainer" {
   labels = {
     terraform = "true"
   }
+  storage_class = "longhorn"
+  storage_size = "128Mi"
 }
