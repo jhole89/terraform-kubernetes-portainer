@@ -1,6 +1,7 @@
 # terraform-kubernetes-portainer
 [![Verify](https://github.com/jhole89/terraform-kubernetes-portainer/workflows/Verify/badge.svg?branch=master)](https://github.com/jhole89/terraform-kubernetes-portainer/actions?query=workflow%3AVerify)
 [![Latest Release](https://badgen.net/github/release/jhole89/terraform-kubernetes-portainer)](https://github.com/jhole89/terraform-kubernetes-portainer/releases/latest)
+[![TF Registry](https://badgen.net/badge/icon/terraform?icon=terraform&label)](https://registry.terraform.io/modules/jhole89/portainer/kubernetes)
 
 `terraform-kubernetes-portainer` is a Terraform module for running [Portainer](https://www.portainer.io/) on a 
 [Kubernetes](https://kubernetes.io/) cluster.
