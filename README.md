@@ -16,6 +16,7 @@ The module will create the following Kubernetes resources:
    * Kubernetes Namespace
    * Kubernetes ServiceAccount
    * Kubernetes ClusterRoleBinding
+   * Kubernetes PersistentVolumeClaim
    * Kubernetes Deployment
    * Kubernetes Service with LoadBalancer
 
