@@ -34,11 +34,11 @@ resource "kubernetes_cluster_role_binding" "portainer" {
 
 resource "kubernetes_persistent_volume_claim" "portainer" {
   metadata {
-    name = "${var.name}-pvc"
+    name      = "${var.name}-pvc"
     namespace = kubernetes_namespace.portainer.metadata.0.name
   }
   spec {
-    access_modes = ["ReadWriteOnce"]
+    access_modes       = ["ReadWriteOnce"]
     storage_class_name = var.storage_class
     resources {
       requests = {
@@ -84,8 +84,8 @@ resource "kubernetes_deployment" "portainer" {
           }
           volume_mount {
             mount_path = "/data"
-            name = "data"
-            read_only = false
+            name       = "data"
+            read_only  = false
           }
         }
         volume {

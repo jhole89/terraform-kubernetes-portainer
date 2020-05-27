@@ -14,5 +14,5 @@ module "portainer" {
     terraform = "true"
   }
   storage_class = "longhorn"
-  storage_size = "128Mi"
+  storage_size  = "128Mi"
 }

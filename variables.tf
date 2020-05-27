@@ -29,13 +29,13 @@ variable "edge_port" {
 }
 
 variable "storage_class" {
-  type = string
+  type        = string
   description = "Persisted Volume storage class"
-  default = "local-path"
+  default     = "local-path"
 }
 
 variable "storage_size" {
-  type = string
+  type        = string
   description = "Persisted Volume storage size"
-  default = "128Mi"
+  default     = "128Mi"
 }
