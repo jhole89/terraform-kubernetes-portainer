@@ -6,8 +6,11 @@
 `terraform-kubernetes-portainer` is a Terraform module for running [Portainer](https://www.portainer.io/) on a 
 [Kubernetes](https://kubernetes.io/) cluster.
 
-:warning: This is not production-ready, due to having an upwards dependency on the 
-[portainer-k8s-beta image](https://hub.docker.com/r/portainer/portainer-k8s-beta) which itself is only in beta. :warning:
+:warning:
+This has an upwards dependency on the 
+[portainer-k8s-beta image](https://hub.docker.com/r/portainer/portainer-k8s-beta) 
+which itself is only in beta.
+:warning:
 
 ## Features
 
