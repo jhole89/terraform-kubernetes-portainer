@@ -12,17 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-go@v2
-      - uses: opsgang/ga-setup-minikube@v0.1.1
+      - uses: manusa/actions-setup-minikube@v1.0.2
         with:
-          minikube-version: 1.4.0
-          k8s-version: 1.15.1
-
-      - name: Cluster Start
-        run: |
-          minikube config set vm-driver kvm2
-          minikube config set kubernetes-version v1.15.1
-          minikube start
-          minikube update-context
+          minikube version: 'v1.9.2'
+          kubernetes version: 'v1.18.2'
 
       - name: Go Test
         id: test
