@@ -6,13 +6,14 @@ provider "kubernetes" {
 }
 
 module "portainer" {
-  source    = "./../../"
-  name      = "my-portainer"
-  edge_port = 8001
-  http_port = 9001
+  source       = "./../../"
+  name         = "my-portainer"
+  service_type = "NodePort"
+  edge_port    = 8001
+  http_port    = 9001
   labels = {
     terraform = "true"
   }
-  storage_class = "longhorn"
+  storage_class = "standard"
   storage_size  = "128Mi"
 }

@@ -4,7 +4,7 @@ locals {
 
 resource "kubernetes_namespace" "portainer" {
   metadata {
-    name = var.name
+    name = "${var.name}-ns"
   }
 }
 
@@ -50,7 +50,7 @@ resource "kubernetes_persistent_volume_claim" "portainer" {
 
 resource "kubernetes_deployment" "portainer" {
   metadata {
-    name      = var.name
+    name      = "${var.name}-deployment"
     namespace = kubernetes_namespace.portainer.metadata.0.name
   }
   spec {
@@ -107,11 +107,11 @@ resource "kubernetes_deployment" "portainer" {
 
 resource "kubernetes_service" "portainer" {
   metadata {
-    name      = var.name
+    name      = "${var.name}-service"
     namespace = kubernetes_namespace.portainer.metadata.0.name
   }
   spec {
-    type     = "LoadBalancer"
+    type     = var.service_type
     selector = kubernetes_deployment.portainer.spec.0.selector.0.match_labels
     port {
       name        = "edge"

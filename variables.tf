@@ -16,6 +16,12 @@ variable "labels" {
   default     = {}
 }
 
+variable "service_type" {
+  type        = string
+  description = "Determines how the service is exposed"
+  default     = "ClusterIP"
+}
+
 variable "http_port" {
   type        = number
   description = "LoadBalancer HTTP port."
