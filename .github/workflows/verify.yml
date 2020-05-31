@@ -22,6 +22,8 @@ jobs:
         with:
           tf_docs_working_dir: .
           tf_docs_output_file: README.md
+          tf_docs_output_method: inject
+          tf_docs_git_push: 'true'
 
       - name: Terraform Init
         id: init
@@ -40,8 +42,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-go@v2
 
       - name: Go fmt
-        uses: actions/setup-go@v2
         id: go-fmt
         run: cd test && go fmt
