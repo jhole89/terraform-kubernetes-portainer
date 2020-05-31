@@ -12,9 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-go@v2
-      - uses: engineerd/setup-kind@v0.4.0
-        with:
-          name: "minikube"
       - uses: hashicorp/setup-terraform@v1
 
       - name: Terraform fmt
@@ -32,7 +29,3 @@ jobs:
       - name: Terraform Plan
         id: plan
         run: terraform plan -no-color
-
-      - name: Go Test
-        id: test
-        run: cd test  && go test

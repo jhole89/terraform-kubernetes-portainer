@@ -1,0 +1,23 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - "**"
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-go@v2
+      - uses: opsgang/ga-setup-minikube@v0.1.1
+
+      - name: Cluster Start
+        id: start
+        run: minikube start
+
+      - name: Go Test
+        id: test
+        run: cd test  && go test
