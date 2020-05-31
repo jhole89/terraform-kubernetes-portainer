@@ -1,5 +1,6 @@
 # terraform-kubernetes-portainer
-[![Verify](https://github.com/jhole89/terraform-kubernetes-portainer/workflows/Verify/badge.svg?branch=master)](https://github.com/jhole89/terraform-kubernetes-portainer/actions?query=workflow%3AVerify)
+[![Local Verify](https://github.com/jhole89/terraform-kubernetes-portainer/workflows/Verify/badge.svg?branch=master)](https://github.com/jhole89/terraform-kubernetes-portainer/actions?query=workflow%3AVerify)
+[![Cluster E2E](https://github.com/jhole89/terraform-kubernetes-portainer/workflows/Cluster%20E2E/badge.svg?branch=master)](https://github.com/jhole89/terraform-kubernetes-portainer/actions?query=workflow%3A%22Cluster+E2E%22)
 [![Latest Release](https://badgen.net/github/release/jhole89/terraform-kubernetes-portainer)](https://github.com/jhole89/terraform-kubernetes-portainer/releases/latest)
 [![TF Registry](https://badgen.net/badge/icon/terraform?icon=terraform&label)](https://registry.terraform.io/modules/jhole89/portainer/kubernetes)
 
