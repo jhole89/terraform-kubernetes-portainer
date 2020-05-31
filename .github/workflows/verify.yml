@@ -6,17 +6,22 @@ on:
       - "**"
 
 jobs:
-  pipeline:
+  tf-checks:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-go@v2
       - uses: hashicorp/setup-terraform@v1
 
       - name: Terraform fmt
         id: tf-fmt
         run: terraform fmt -check -recursive
+
+      - name: Terraform Docs
+        uses: Dirrk/terraform-docs@v1.0.8
+        with:
+          tf_docs_working_dir: .
+          tf_docs_output_file: README.md
 
       - name: Terraform Init
         id: init
@@ -30,6 +35,13 @@ jobs:
         id: plan
         run: terraform plan -no-color
 
+  go-checks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
       - name: Go fmt
+        uses: actions/setup-go@v2
         id: go-fmt
         run: cd test && go fmt
