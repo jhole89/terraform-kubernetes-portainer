@@ -18,7 +18,6 @@ jobs:
         id: start
         run: |
           minikube config set vm-driver kvm2
-          minikube config set kubernetes-version=v1.15.1
           minikube start
 
       - name: Go Test
