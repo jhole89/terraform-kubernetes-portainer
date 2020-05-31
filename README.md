@@ -52,6 +52,45 @@ be breaking changes between releases. Instead, pin to the release tag (e.g. `?re
 [latest releases](https://github.com/jhole89/terraform-kubernetes-portainer/releases).
 
 <!--- BEGIN_TF_DOCS ---> 
+## Requirements
+
+| Name | Version |
+|------|---------|
+| terraform | ~> 0.12.0 |
+| kubernetes | ~> 1.11 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| kubernetes | ~> 1.11 |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| edge\_port | Agent EDGE port. | `number` | `8000` | no |
+| http\_port | LoadBalancer HTTP port. | `number` | `9000` | no |
+| image | Docker image. | `string` | `"portainer/portainer-k8s-beta:linux-amd64"` | no |
+| labels | App labels to be used for namespace, service, and deployment. | `map(string)` | `{}` | no |
+| name | App name to be used for namespace, service, and deployment. | `string` | `"portainer"` | no |
+| service\_type | Determines how the service is exposed | `string` | `"ClusterIP"` | no |
+| storage\_class | Persisted Volume storage class | `string` | `"local-path"` | no |
+| storage\_size | Persisted Volume storage size | `string` | `"128Mi"` | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| crb\_name | n/a |
+| deployment\_name | n/a |
+| ingress | n/a |
+| namespace | n/a |
+| pvc\_name | n/a |
+| service\_account\_name | n/a |
+| service\_name | n/a |
+| service\_url | n/a |
+| service\_version | n/a |
 
 <!--- END_TF_DOCS --->
 
