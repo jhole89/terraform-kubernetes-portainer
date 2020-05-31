@@ -15,7 +15,7 @@ jobs:
       - uses: hashicorp/setup-terraform@v1
 
       - name: Terraform fmt
-        id: fmt
+        id: tf-fmt
         run: terraform fmt -check -recursive
 
       - name: Terraform Init
@@ -29,3 +29,7 @@ jobs:
       - name: Terraform Plan
         id: plan
         run: terraform plan -no-color
+
+      - name: Go fmt
+        id: go-fmt
+        run: cd test && go fmt

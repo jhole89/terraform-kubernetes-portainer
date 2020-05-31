@@ -6,7 +6,7 @@ on:
       - "**"
 
 jobs:
-  pipeline:
+  cluster-tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,8 +16,11 @@ jobs:
 
       - name: Cluster Start
         id: start
-        run: minikube start
+        run: |
+          minikube config set vm-driver kvm2
+          minikube config set kubernetes-version=v1.15.1
+          minikube start
 
       - name: Go Test
         id: test
-        run: cd test  && go test
+        run: cd test && go test
